@@ -2,6 +2,7 @@ package entity
 
 type Student struct {
 	Id              string `json:"id" bson:"_id"`
+	Base            `bson:",inline"`
 	StudentUsername string `json:"student_username"`
 	Name            struct {
 		FirstName string `json:"first_name"`
