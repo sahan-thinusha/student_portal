@@ -7,3 +7,7 @@ var MongoDBConnection *mongo.Database
 const RESTPort = "REST_PORT"
 
 var REST_Port string
+
+const MongoURI = "MongoURI"
+
+var Mongo_URI string
