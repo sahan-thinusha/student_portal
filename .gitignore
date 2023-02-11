@@ -1,0 +1,19 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+.idea
+protobuf-import
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+generated/*
+!generated/.gitkeep
+ssh/*
+!ssh/config
+test/*
+!test/.gitkeep
