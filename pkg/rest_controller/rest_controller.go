@@ -23,6 +23,7 @@ func EchoController(e *echo.Echo) {
 func NormalRoutes(g *echo.Group) {
 	g.POST("/v1/api/student", api.AddStudent)
 	g.PUT("/v1/api/student", api.UpdateStudent)
+	g.GET("/v1/api/student", api.GetAllStudents)
 
 }
 
