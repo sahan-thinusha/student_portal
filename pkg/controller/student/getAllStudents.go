@@ -11,6 +11,7 @@ import (
 
 func GetAllStudents(index, limit int) ([]*entity.Student, error) {
 	var students []*entity.Student
+	students = []*entity.Student{}
 	ctx := context.Background()
 	db := env.MongoDBConnection
 
@@ -24,7 +25,7 @@ func GetAllStudents(index, limit int) ([]*entity.Student, error) {
 			return nil, err
 		}
 		defer cursor.Close(ctx)
-		if err = cursor.All(context.Background(), students); err != nil {
+		if err = cursor.All(context.Background(), &students); err != nil {
 			return nil, err
 		}
 
@@ -35,7 +36,7 @@ func GetAllStudents(index, limit int) ([]*entity.Student, error) {
 			return nil, err
 		}
 		defer cursor.Close(ctx)
-		if err = cursor.All(context.Background(), students); err != nil {
+		if err = cursor.All(context.Background(), &students); err != nil {
 			return nil, err
 		}
 

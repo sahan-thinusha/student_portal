@@ -17,10 +17,12 @@ func GetAllStudents(c echo.Context) error {
 	if e != nil {
 		limit = -1
 	}
+
 	data, err := controller.GetAllStudents(index, limit)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
+
 	return c.JSON(http.StatusOK, data)
 
 }
