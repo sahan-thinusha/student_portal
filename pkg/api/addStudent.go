@@ -1,22 +1,26 @@
 package api
 
 import (
-	echo "github.com/labstack/echo/v4"
-	"net/http"
+	"encoding/json"
+	"github.com/gofiber/fiber/v2"
 	controller "student_portal/pkg/controller/student"
 	"student_portal/pkg/entity"
 )
 
-func AddStudent(c echo.Context) error {
+func AddStudent(c *fiber.Ctx) error {
 
 	student := entity.Student{}
-	if error := c.Bind(&student); error != nil {
-		return c.JSON(http.StatusBadRequest, error.Error())
+	body := c.Body()
+
+	err := json.Unmarshal(body, &student)
+	if err != nil {
+		return c.JSON(err.Error())
 	}
+
 	data, err := controller.AddStudent(&student)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
+		return c.JSON(err.Error())
 	}
-	return c.JSON(http.StatusOK, data)
+	return c.JSON(data)
 
 }

@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"github.com/labstack/echo/v4"
+	"github.com/gofiber/fiber/v2"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -49,7 +49,9 @@ func mongoConnect() {
 
 func main() {
 	mongoConnect()
-	e := echo.New()
-	rest_controller.EchoController(e)
-	e.Logger.Fatal(e.Start(":" + env.REST_Port))
+	app := fiber.New()
+	rest_controller.FiberController(app)
+
+	app.Listen(":" + env.REST_Port)
+
 }
